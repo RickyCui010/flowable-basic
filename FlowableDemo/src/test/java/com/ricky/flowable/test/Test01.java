@@ -163,22 +163,22 @@ public class Test01 {
 
     }
 
-    /**
-     * 获取流程任务的历史数据
-     */
-    @Test
-    public void testHistory(){
-        ProcessEngine processEngine = configuration.buildProcessEngine();
-        HistoryService historyService = processEngine.getHistoryService();
-        List<HistoricActivityInstance> list = historyService.createHistoricActivityInstanceQuery()
-                .processDefinitionId("holidayRequest:1:7503")
-                .finished() // 查询的历史记录的状态是已经完成
-                .orderByHistoricActivityInstanceEndTime().asc() // 指定排序的字段和顺序
-                .list();
-        for (HistoricActivityInstance history : list) {
-            System.out.println(history.getActivityName()+":"+history.getAssignee()+"--"
-                    +history.getActivityId()+":" + history.getDurationInMillis()+"毫秒");
-        }
+//    /**
+//     * 获取流程任务的历史数据
+//     */
+//    @Test
+//    public void testHistory(){
+//        ProcessEngine processEngine = configuration.buildProcessEngine();
+//        HistoryService historyService = processEngine.getHistoryService();
+//        List<HistoricActivityInstance> list = historyService.createHistoricActivityInstanceQuery()
+//                .processDefinitionId("holidayRequest:1:7503")
+//                .finished() // 查询的历史记录的状态是已经完成
+//                .orderByHistoricActivityInstanceEndTime().asc() // 指定排序的字段和顺序
+//                .list();
+//        for (HistoricActivityInstance history : list) {
+//            System.out.println(history.getActivityName()+":"+history.getAssignee()+"--"
+//                    +history.getActivityId()+":" + history.getDurationInMillis()+"毫秒");
+//        }
 
     }
 }
