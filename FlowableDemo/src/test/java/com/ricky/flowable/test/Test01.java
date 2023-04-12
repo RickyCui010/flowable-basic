@@ -98,9 +98,9 @@ public class Test01 {
         ProcessEngine processEngine = configuration.buildProcessEngine();
         RepositoryService repositoryService = processEngine.getRepositoryService();
         // 删除部署的流程 第一个参数是 id  如果部署的流程启动了就不允许删除了
-         repositoryService.deleteDeployment("2501");
+//         repositoryService.deleteDeployment("2501");
         // 第二个参数是级联删除，如果流程启动了 相关的任务一并会被删除掉
-//        repositoryService.deleteDeployment("20001",true);
+        repositoryService.deleteDeployment("2501",true);
     }
 
     /**
