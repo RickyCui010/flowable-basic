@@ -30,7 +30,8 @@ public class Test01 {
         configuration.setJdbcDriver("com.mysql.cj.jdbc.Driver");
         configuration.setJdbcUsername("root");
         configuration.setJdbcPassword("000000");
-        configuration.setJdbcUrl("jdbc:mysql://localhost:3306/flowable-learn?serverTimezone=UTC&nullCatalogMeansCurrent=true");
+        configuration.setJdbcUrl("jdbc:mysql://localhost:3306/javapub-flowable2?serverTimezone=UTC&nullCatalogMeansCurrent=true");
+//        configuration.setJdbcUrl("jdbc:mysql://localhost:3306/flowable-learn?serverTimezone=UTC&nullCatalogMeansCurrent=true");
         // 如果数据库中的表结构不存在就新建
         configuration.setDatabaseSchemaUpdate(ProcessEngineConfiguration.DB_SCHEMA_UPDATE_TRUE);
         // 通过 ProcessEngineConfiguration 构建我们需要的 processEngine 对象
