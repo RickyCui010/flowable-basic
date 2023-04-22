@@ -3,12 +3,6 @@ package org.flowable;
 import org.flowable.engine.delegate.DelegateExecution;
 import org.flowable.engine.delegate.JavaDelegate;
 
-
-/*
-波哥flowable教程，没完成，因为后面是eclipse插件暂时没看完
-https://www.bilibili.com/video/BV1gG4y1o7MC/?p=12&spm_id_from=pageDriver&vd_source=3d275c15df5bb27a0e7c2d0667ad260d
-* */
-
 public class SendRejectionMail implements JavaDelegate {
     /**
      * 这个一个Flowable中的触发器

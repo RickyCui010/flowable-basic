@@ -3,8 +3,6 @@ package org.flowable;
 import org.flowable.engine.delegate.DelegateExecution;
 import org.flowable.engine.delegate.JavaDelegate;
 
-
-//实现execute方法
 public class CallExternalSystemDelegate implements JavaDelegate {
 
     public void execute(DelegateExecution execution) {

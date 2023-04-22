@@ -15,12 +15,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-
-/*
-这是flowable文档最开始的demo
-链接：https://tkjohn.github.io/flowable-userguide/#getting.started.delegate
-* */
-
 public class HolidayRequest {
     public static void main(String[] args) {
 
