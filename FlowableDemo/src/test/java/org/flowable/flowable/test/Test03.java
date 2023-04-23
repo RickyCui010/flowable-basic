@@ -2,12 +2,9 @@ package org.flowable.flowable.test;
 
 import org.flowable.engine.*;
 import org.flowable.engine.history.HistoricActivityInstance;
-import org.flowable.engine.history.HistoricActivityInstanceQuery;
 import org.flowable.engine.impl.cfg.StandaloneProcessEngineConfiguration;
 import org.flowable.engine.repository.Deployment;
-import org.flowable.engine.repository.DeploymentBuilder;
 import org.flowable.engine.repository.ProcessDefinition;
-import org.flowable.engine.repository.ProcessDefinitionQuery;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.flowable.task.api.Task;
 import org.junit.Before;
@@ -17,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Test01 {
+public class Test03 {
 
     /**
      * 获取流程引擎对象
@@ -66,8 +63,8 @@ public class Test01 {
         RepositoryService repositoryService = processEngine.getRepositoryService();
         // 3.完成流程的部署操作
         Deployment deploy = repositoryService.createDeployment()
-                .addClasspathResource("holiday-request.bpmn20.xml")// 关联要部署的流程文件
-                .name("请求流程")
+                .addClasspathResource("MyHoliday.bpmn20.xml")// 关联要部署的流程文件
+                .name("FlowableUI请求流程")
                 .deploy() ;// 部署流程
         System.out.println("deploy.getId() = " + deploy.getId());
         System.out.println("deploy.getName() = " + deploy.getName());
@@ -119,7 +116,7 @@ public class Test01 {
         variables.put("nrOfHolidays",3);
         variables.put("desciption","工作累了，出去玩玩");
         // 启动流程实例
-        ProcessInstance holidayRequest = runtimeService.startProcessInstanceByKey("holidayRequest", variables);
+        ProcessInstance holidayRequest = runtimeService.startProcessInstanceById("MyHoliday:5:17504", variables);
         System.out.println("holidayRequest.getProcessDefinitionId() = " + holidayRequest.getProcessDefinitionId());
         System.out.println("holidayRequest.getActivityId() = " + holidayRequest.getActivityId());
         System.out.println("holidayRequest.getId() = " + holidayRequest.getId());
@@ -153,8 +150,8 @@ public class Test01 {
         ProcessEngine processEngine = configuration.buildProcessEngine();
         TaskService taskService = processEngine.getTaskService();
         Task task = taskService.createTaskQuery()
-                .processDefinitionKey("holidayRequest")
-                .taskAssignee("zhangsan")
+                .processDefinitionKey("MyHoliday")
+                .taskAssignee("user2")
                 .singleResult();
         // 创建流程变量
         Map<String,Object> map = new HashMap<>();
@@ -172,7 +169,7 @@ public class Test01 {
         ProcessEngine processEngine = configuration.buildProcessEngine();
         HistoryService historyService = processEngine.getHistoryService();
         List<HistoricActivityInstance> list = historyService.createHistoricActivityInstanceQuery()
-                .processDefinitionId("holidayRequest:1:7503")
+                .processDefinitionId("MyHoliday:5:17504")
                 .finished() // 查询的历史记录的状态是已经完成
                 .orderByHistoricActivityInstanceEndTime().asc() // 指定排序的字段和顺序
                 .list();
